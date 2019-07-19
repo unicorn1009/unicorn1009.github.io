@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[测试文]]></title>
+    <url>%2F2019%2F07%2F19%2F%E6%B5%8B%E8%AF%95%E6%96%87%2F</url>
+    <content type="text"><![CDATA[1. 在右上角或者左上角实现fork me on github实现效果图具体实现方法 2.添加RSS实现效果图具体实现方法]]></content>
+      <tags>
+        <tag>测试1</tag>
+        <tag>测试2</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[第一篇]]></title>
     <url>%2F2019%2F07%2F19%2F%E7%AC%AC%E4%B8%80%E7%AF%87%2F</url>
     <content type="text"><![CDATA[标题内容 二级标题内容 三级标题内容]]></content>
