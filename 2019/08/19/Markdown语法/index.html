@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="文化使人脸上肉变多     -- 鲁迅">
+    <meta name="author" content="Unicorn">
+    <meta name="keywords" content>
+    <title>Markdown语法 ~ Hexo</title>
+    <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css?v=5.7.2">
+    <link rel="stylesheet" href="/lib/mdbootstrap/css/bootstrap.min.css?v=4.3.1">
+    <link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css?v=4.8.7">
+    <link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css">
+    <link rel="stylesheet" href="/lib/nprogress/nprogress.css?v=0.2.0">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+    
+        <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css">
+    
+    <link rel="stylesheet" href="/css/main.css">
+
+    
+</head>
+
+
+<body>
+<header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+<div class="container">
+    <a class="navbar-brand" href="/">&nbsp;<strong>Hexo</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto text-center">
+            
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="/archives/">Archives</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="/categories/">Categories</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="/tags/">Tags</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="/about/">About</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+</nav>
+    <div class="view intro-2"
+         style="background: url('/img/wallhaven-0qkg1q.jpg')no-repeat center center;background-size: cover;">
+        <div class="full-bg-img">
+            <div class="mask rgba-black-light flex-center">
+                <div class="container text-center white-text wow fadeInUp">
+                    <span class="h2" id="subtitle">
+                        
+                    </span>
+                    
+                        <br>
+                        <p>Monday, August 19th 2019, 1:35 pm</p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div id="live2d-widget">
+    <canvas id="live2dcanvas" width="200" height="440"
+            style="position: fixed; opacity: 1; right: 0px; bottom: 0; z-index: 99999; pointer-events: none;"></canvas>
+</div>
+
+<main>
+    
+        
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="d-none d-lg-block col-lg-2"></div>
+            <div class="col-lg-8 nopadding-md">
+                <div class="py-5 z-depth-3 board">
+                    <div class="post-content mx-auto">
+                        <div class="markdown-body">
+                            <p>学习如何使用Markdown语法写文章</p>
+<a id="more"></a>
+
+<h1 id="两种标题语法"><a href="#两种标题语法" class="headerlink" title="两种标题语法"></a>两种标题语法</h1><h1 id="这是第一级标题"><a href="#这是第一级标题" class="headerlink" title="这是第一级标题"></a>这是第一级标题</h1><h2 id="这是第二级标题"><a href="#这是第二级标题" class="headerlink" title="这是第二级标题"></a>这是第二级标题</h2><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><h2 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h2><p>段落就是直接写文字，起新段落空一行即可</p>
+<p>这是第二段<br>第二段的内容</p>
+<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><p><em>斜体文字</em><br><em>斜体文字</em><br><strong>粗体文字</strong><br><strong>粗体文字</strong><br><strong><em>粗斜体文字</em></strong><br><strong><em>粗斜体文字</em></strong></p>
+<h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><h4 id="使用三个以上的星号或-号，后面不能跟其他文字"><a href="#使用三个以上的星号或-号，后面不能跟其他文字" class="headerlink" title="使用三个以上的星号或-号，后面不能跟其他文字"></a>使用三个以上的星号或-号，后面不能跟其他文字</h4><hr>
+<hr>
+<hr>
+<hr>
+<h2 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h2><p><del>删除这段文字</del></p>
+<h2 id="下划线"><a href="#下划线" class="headerlink" title="下划线"></a>下划线</h2><p><u>带下划线</u></p>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h4 id="无序列表，使用星号-、加号-或是减号-作为列表标记"><a href="#无序列表，使用星号-、加号-或是减号-作为列表标记" class="headerlink" title="无序列表，使用星号(*)、加号(+)或是减号(-)作为列表标记"></a>无序列表，使用星号(*)、加号(+)或是减号(-)作为列表标记</h4><ul>
+<li>*号列表</li>
+<li>*号列表</li>
+<li>*号列表</li>
+</ul>
+<ul>
+<li>+号列表</li>
+<li>+号列表</li>
+<li>+号列表</li>
+</ul>
+<ul>
+<li>-号列表</li>
+<li>-号列表</li>
+<li>-号列表</li>
+</ul>
+<h4 id="有序列表，有序列表使用数字并加上-号来表示"><a href="#有序列表，有序列表使用数字并加上-号来表示" class="headerlink" title="有序列表，有序列表使用数字并加上 . 号来表示"></a>有序列表，有序列表使用数字并加上 . 号来表示</h4><ol start="2">
+<li><p>有序列表</p>
+</li>
+<li><p>有序列表</p>
+</li>
+<li><p>有序列表</p>
+</li>
+<li><p>列表</p>
+</li>
+</ol>
+<h2 id="列表嵌套，只需在子列表中的选项添加四个空格或者TAB即可"><a href="#列表嵌套，只需在子列表中的选项添加四个空格或者TAB即可" class="headerlink" title="列表嵌套，只需在子列表中的选项添加四个空格或者TAB即可"></a>列表嵌套，只需在子列表中的选项添加四个空格或者TAB即可</h2><ol start="2">
+<li>一级列表<ul>
+<li>二级列表(TAB)</li>
+<li>二级列表(四空格)<ul>
+<li>三级列表(TAB+TAB)</li>
+<li>三级列表(四空格+TAB)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="区块，在段落开头使用-gt-符号和空格"><a href="#区块，在段落开头使用-gt-符号和空格" class="headerlink" title="区块，在段落开头使用 &gt; 符号和空格"></a>区块，在段落开头使用 &gt; 符号和空格</h2><blockquote>
+<p>区块引用<br>菜鸟教程<br>学的不仅是技术更是梦想</p>
+</blockquote>
+<h4 id="列表中使用区块"><a href="#列表中使用区块" class="headerlink" title="列表中使用区块"></a>列表中使用区块</h4><ul>
+<li>列表<blockquote>
+<p>区块<br>区块</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h4 id="段落中潜入代码使用-符号包起来"><a href="#段落中潜入代码使用-符号包起来" class="headerlink" title="段落中潜入代码使用`符号包起来"></a>段落中潜入代码使用`符号包起来</h4><p>比如在这段文字中写一句代码<code>print(&quot;hello world&quot;)</code>，效果美观</p>
+<h4 id="一整段代码块，使用-把代码包裹起来即可"><a href="#一整段代码块，使用-把代码包裹起来即可" class="headerlink" title="一整段代码块，使用```把代码包裹起来即可"></a>一整段代码块，使用```把代码包裹起来即可</h4><pre><code>import time
+from datetime import datetime
+import xlwt
+
+from superadmin.models import PowerOffModel, MessageModel
+from superadmin.tower.common import zipUtils
+from superadmin.tower.utils import excelUtil</code></pre><h4 id="后面可以指定编程语言"><a href="#后面可以指定编程语言" class="headerlink" title="```后面可以指定编程语言"></a>```后面可以指定编程语言</h4><pre><code class="javascript">$(document).ready(function () {
+    alert(&#39;hello world&#39;);
+});</code></pre>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p>使用方法：</p>
+<ul>
+<li><a href="链接地址">链接名称</a></li>
+</ul>
+<p><a href="https://www.baidu.com" target="_blank" rel="noopener">百度</a></p>
+<p>或者<br>&lt;链接地址&gt;<br><a href="https://www.runoob.com" target="_blank" rel="noopener">https://www.runoob.com</a></p>
+<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><h4 id="开头一个！号，接着一个方括号-放图片替代文字-地址-，如"><a href="#开头一个！号，接着一个方括号-放图片替代文字-地址-，如" class="headerlink" title="开头一个！号，接着一个方括号[放图片替代文字] (地址)，如"></a>开头一个！号，接着一个方括号[放图片替代文字] (地址)，如</h4><p><img src="http://pic30.nipic.com/20130619/9885883_210838271000_2.jpg" alt="鸟"></p>
+<h4 id="但没办法控制图片尺寸，可以用-lt-img-gt-标签代替"><a href="#但没办法控制图片尺寸，可以用-lt-img-gt-标签代替" class="headerlink" title="但没办法控制图片尺寸，可以用&lt; img &gt;标签代替"></a>但没办法控制图片尺寸，可以用&lt; img &gt;标签代替</h4><img src="http://pic30.nipic.com/20130619/9885883_210838271000_2.jpg" width="30%">
+
+
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><p>####制作表格使用 | 来分隔不同的单元格，使用 - 来分隔表头和其他行。</p>
+<table>
+<thead>
+<tr>
+<th>表头</th>
+<th>表头</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>单元格</td>
+<td>单元格</td>
+</tr>
+<tr>
+<td>单元格</td>
+<td>单元格</td>
+</tr>
+</tbody></table>
+<h5 id="设置对齐方式"><a href="#设置对齐方式" class="headerlink" title="设置对齐方式"></a>设置对齐方式</h5><ul>
+<li>-： 设置内容和标题栏居右对齐。</li>
+<li>：- 设置内容和标题栏居左对齐。</li>
+<li>：-： 设置内容和标题栏居中对齐。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">左对齐</th>
+<th align="right">右对齐</th>
+<th align="center">居中对齐</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">单元格</td>
+<td align="right">单元格</td>
+<td align="center">单元格</td>
+</tr>
+<tr>
+<td align="left">单元格单元格单元格</td>
+<td align="right">单元格单元格单元格</td>
+<td align="center">单元格单元格单元格</td>
+</tr>
+</tbody></table>
+
+                            <hr>
+                        </div>
+                        <br>
+                        <div>
+                            
+                                <p>
+                                    <i class="iconfont icon-inbox"></i>
+                                    
+                                        <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0">学习</a>
+                                        &nbsp;
+                                    
+                                </p>
+                            
+                            <p>
+                                <i class="iconfont icon-tag"></i>
+                                
+                                    <a class="hover-with-bg" href="/tags/markdown">markdown</a>
+                                
+                                    <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0">学习</a>
+                                
+                            </p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="d-none d-lg-block col-lg-2 toc-container">
+            
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i> Toc:</p> 
+    <div id="tocbot"></div>
+  </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+    <div class="container comments mx-auto" id="comments">
+        
+    </div>
+</div>
+    
+</main>
+
+<footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/0x2e/Material-T" target="_blank" rel="nofollow noopener"> <b>Material-T</b></a>
+    <br>
+    
+  </div>
+</footer>
+
+  <!-- SCRIPTS -->
+  <script src="/lib/mdbootstrap/js/jquery-3.4.1.min.js"></script>
+  <script src="/lib/mdbootstrap/js/popper.min.js"></script>
+  <script src="/lib/mdbootstrap/js/bootstrap.min.js?v=4.3.1"></script>
+  <script src="/lib/mdbootstrap/js/mdb.min.js?v=4.8.7"></script>
+  <script src="/lib/nprogress/nprogress.min.js?v=0.2.0"></script>
+  <script src="/js/main.js"></script>
+  
+    
+      <script src="/lib/tocbot/tocbot.min.js?v=4.7.0"></script>
+    
+    <script src="/js/post.js"></script>
+  
+  
+    <script src="/lib/prettify/prettify.min.js?v=0.1.0"></script>
+    <script>
+      $(document).ready(function(){
+        $('pre').addClass('prettyprint linenums');
+        prettyPrint();
+      })
+    </script>
+  
+  
+    <script src="/lib/typed/typed.min.js?v=2.0.9"></script>
+    <script>
+        var typed = new Typed('#subtitle', {
+          strings: [
+            '  ',
+            "Markdown语法&nbsp;",
+        ],
+        cursorChar: "_",
+        typeSpeed: 70,
+        startDelay: 300, //开始之前延迟300毫秒
+        loop: false,
+        });
+        $(".typed-cursor").addClass("h2");
+    </script>
+  
+  
+    <script src="/lib/anchor/anchor.min.js?v=4.2.0"></script>
+    <script>
+      anchors.options = {
+        placement: "right",
+        visible: "false",
+        
+      };
+      anchors.add(".post-content > h1,h2,h3,h4,h5,h6");
+    </script>
+  
+<script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+  L2Dwidget.init({
+      "model": {
+          jsonPath: "https://unpkg.com/live2d-widget-model-hijiki@1.0.5/assets/hijiki.model.json",
+          "scale": 1
+      },
+      "display": {
+          "position": "right",
+          "width": 100,
+          "height": 200,
+          "hOffset": 10,
+          "vOffset": -70
+      },
+      "mobile": {
+          "show": true,
+          "scale": 0.5
+      },
+      "react": {
+          "opacityDefault": 0.8,
+          "opacityOnHover": 0.2
+      }
+  });
+</script>
+</body>
+</html>

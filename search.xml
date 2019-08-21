@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[使用代理解决国内git clone速度慢的问题]]></title>
+    <url>%2F2019%2F08%2F21%2F%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86%E8%A7%A3%E5%86%B3%E5%9B%BD%E5%86%85git-clone%E9%80%9F%E5%BA%A6%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[众所周知，国内访问GitHub速度感人，无论clone还是push操作等待时间都让人抓狂，不过如果你有网络代理工具，则可利用代理接管所有git操作 解决方法如下准备 准备好代理工具，如clash，shadowsocks等 步骤 开启代理工具，查看对应代理工具的端口号 clash 一般为7891 shadowsocks 一般为1080 打开终端（windows系统可打开powershell或其cmd），执行以下命令 git config --global http.proxy socks5://127.0.0.1:1080 git config --global https.proxy socks5://127.0.0.1:1080 完成后再尝试git clone等操作会发现速度明显提升 注意： 经过这种操作后每次执行git操作都要确保已经开启了代理工具，否则可能会报无法连接的错误 几个问题 以后每次执行git命令都需要开启代理，如果有时代理又不能使用时，我们需要取消git代理，可在终端中执行以下命令git config --global --unset http.proxy git config --global --unset https.proxy 上述方法是挂了全局代理，即只要是git操作就通过代理，但有时我们需要访问的不是GitHub而是国内的码云等代码仓库，使用代理反而很慢，此时更好的方法是只对github进行代理，不会影响国内仓库git config --global http.https://github.com.proxy socks5://127.0.0.1:1080 git config --global https.https://github.com.proxy socks5://127.0.0.1:1080 本文完结]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Markdown语法]]></title>
+    <url>%2F2019%2F08%2F19%2FMarkdown%E8%AF%AD%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[学习如何使用Markdown语法写文章 两种标题语法这是第一级标题这是第二级标题一级标题二级标题三级标题四级标题五级标题六级标题段落段落就是直接写文字，起新段落空一行即可 这是第二段第二段的内容 字体斜体文字斜体文字粗体文字粗体文字粗斜体文字粗斜体文字 分割线使用三个以上的星号或-号，后面不能跟其他文字 删除线删除这段文字 下划线带下划线 列表无序列表，使用星号(*)、加号(+)或是减号(-)作为列表标记 *号列表 *号列表 *号列表 +号列表 +号列表 +号列表 -号列表 -号列表 -号列表 有序列表，有序列表使用数字并加上 . 号来表示 有序列表 有序列表 有序列表 列表 列表嵌套，只需在子列表中的选项添加四个空格或者TAB即可 一级列表 二级列表(TAB) 二级列表(四空格) 三级列表(TAB+TAB) 三级列表(四空格+TAB) 区块，在段落开头使用 &gt; 符号和空格 区块引用菜鸟教程学的不仅是技术更是梦想 列表中使用区块 列表 区块区块 代码段落中潜入代码使用`符号包起来比如在这段文字中写一句代码print(&quot;hello world&quot;)，效果美观 一整段代码块，使用```把代码包裹起来即可import time from datetime import datetime import xlwt from superadmin.models import PowerOffModel, MessageModel from superadmin.tower.common import zipUtils from superadmin.tower.utils import excelUtil```后面可以指定编程语言$(document).ready(function () { alert(&#39;hello world&#39;); }); 链接使用方法： 链接名称 百度 或者&lt;链接地址&gt;https://www.runoob.com 图片开头一个！号，接着一个方括号[放图片替代文字] (地址)，如 但没办法控制图片尺寸，可以用&lt; img &gt;标签代替 表格####制作表格使用 | 来分隔不同的单元格，使用 - 来分隔表头和其他行。 表头 表头 单元格 单元格 单元格 单元格 设置对齐方式 -： 设置内容和标题栏居右对齐。 ：- 设置内容和标题栏居左对齐。 ：-： 设置内容和标题栏居中对齐。 左对齐 右对齐 居中对齐 单元格 单元格 单元格 单元格单元格单元格 单元格单元格单元格 单元格单元格单元格]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>markdown</tag>
+        <tag>学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[测试文]]></title>
     <url>%2F2019%2F07%2F19%2F%E6%B5%8B%E8%AF%95%E6%96%87%2F</url>
-    <content type="text"><![CDATA[1. 在右上角或者左上角实现fork me on github实现效果图具体实现方法 2.添加RSS实现效果图具体实现方法]]></content>
+    <content type="text"><![CDATA[这里是摘要 1. 在右上角或者左上角实现fork me on github实现效果图具体实现方法 2.添加RSS实现效果图具体实现方法]]></content>
       <tags>
         <tag>影音</tag>
         <tag>电影</tag>
@@ -17,13 +40,8 @@
     <content type="text"><![CDATA[标题内容 二级标题内容 三级标题内容]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>%2F2019%2F07%2F19%2F%E6%88%91%E7%9A%84%E5%8D%9A%E6%96%87%2F</url>
-    <content type="text"><![CDATA[title: 我的博文date: 2019-07-19 11:26:52 tags:大标题小标题内容 小标题内容 结论结论-]]></content>
-  </entry>
-  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2019%2F07%2F19%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post$ hexo new &quot;My New Post&quot; More info: Writing Run server$ hexo server More info: Server Generate static files$ hexo generate More info: Generating Deploy to remote sites$ hexo deploy More info: Deployment]]></content>
   </entry>
 </search>
