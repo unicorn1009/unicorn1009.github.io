@@ -39,25 +39,6 @@
 
 
 <body>
-  <script src="http://xiaowiba.com/live2d_models/L2Dwidget.min.js"></script>
-<script src="http://xiaowiba.com/live2d_models/L2Dwidget.0.min.js"></script>
-<script>
-    L2Dwidget.init({
-        "model":{
-            "scale":1,"hHeadPos":0.5,"vHeadPos":0.618,
-            "jsonPath":"http://xiaowiba.com/live2d_models/live2d-widget-model-hijiki/assets/hijiki.model.json"
-        },
-        "display":{
-            "superSample":2,"width":100,"height":220,"position":"right","hOffset":20,"vOffset":-20
-        },
-        "mobile":{
-            "show":false,"scale":0.5
-        },
-        "react":{
-            "opacityDefault":0.7,"opacityOnHover":0.2
-        }
-    });
-</script>
   <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
@@ -163,24 +144,22 @@
   <div class="row mb-4 mx-auto">
     
     
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/01/11/new-post/" target="_blank">
+          <img src="/img/github.jpeg" alt="new post" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/01/11/hello-world/">
-        <p class="h4 index-header">Hello World</p>
+      <a href="/2020/01/11/new-post/">
+        <p class="h4 index-header">new post</p>
         
         
           
+          
         
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post$ hexo new &quot;My New Post&quot;
-More info: Writing
-Run server$ hexo server
-More info: Server
-Generate static files$ hexo generate
-More info: Generating
-Deploy to remote sites$ hexo deploy
-More info: Deployment
-</div>
+        <div class="index-excerpt" style="max-height: none;">
+          <div class="index-text mb-1">这里是摘要...</div>
         </div>
       </a>
 
@@ -189,6 +168,13 @@ More info: Deployment
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-01-11&nbsp;&nbsp;
         
         
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Hexo">Hexo</a>&nbsp;
+          
+            <a href="/tags/Fluid">Fluid</a>&nbsp;
+          
         
       </div>
     </div>
@@ -290,10 +276,6 @@ More info: Deployment
         </div>
       </div>
     
-    <div id="live2d-widget">
-      <canvas id="live2dcanvas" width="200" height="440" 
-      style="position: fixed; opacity: 1; right: 0px; bottom: 0; z-index: 99999; pointer-events: none;"></canvas>
-    </div>
   </main>
 
   
