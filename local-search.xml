@@ -25,27 +25,6 @@
   
   
   <entry>
-    <title>new post</title>
-    <link href="/2020/01/11/new-post/"/>
-    <url>/2020/01/11/new-post/</url>
-    
-    <content type="html"><![CDATA[<p>这里是摘要</p><a id="more"></a><p>这里是正文<br>这里是正文这里是正文这里是正文<br>这里是正文这里是正文<br>这里是正文<br>这里是正文这里是正文<br>这里是正文</p>]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>Hexo</tag>
-      
-      <tag>Fluid</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>使用代理解决国内git clone速度慢的问题</title>
     <link href="/2019/08/21/%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86%E8%A7%A3%E5%86%B3%E5%9B%BD%E5%86%85git-clone%E9%80%9F%E5%BA%A6%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/"/>
     <url>/2019/08/21/%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86%E8%A7%A3%E5%86%B3%E5%9B%BD%E5%86%85git-clone%E9%80%9F%E5%BA%A6%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/</url>
