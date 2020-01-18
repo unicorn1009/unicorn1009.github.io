@@ -16,7 +16,7 @@
   <meta name="description" content="文化使人脸上肉变多     -- 鲁迅">
   <meta name="author" content="Unicorn">
   <meta name="keywords" content="">
-  <title>标签 - macOS ~ Unicorn&#39;s blog</title>
+  <title>标签 - macos ~ Unicorn&#39;s blog</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -40,6 +40,772 @@
 
 <body>
   <header style="height: 80vh;">
+    <style>
+      /*UI设计参考：https://dribbble.com/shots/2365362-A-or-B-Bottom-music-player-dashboard*/
+      .meplayer-container-mini {
+    margin: 0 auto;
+}
+
+.meplayer-container {
+    margin: 0 auto;
+}
+
+.meplayer-container {
+    font-family: Helvetica, Tahoma, Arial, STXihei, '华文细黑', 'Microsoft YaHei', '微软雅黑', SimSun, '宋体', Heiti, '黑体', sans-serif;
+
+    position: relative;
+
+    box-sizing: border-box;
+    width: 100%;
+    height: 90px;
+
+    background: #FFF;
+    box-shadow: 0 0 20px rgba(59, 59, 177, .18);
+}
+
+.meplayer-container .meplayer-info {
+    font-weight: 300;
+
+    position: relative;
+    left: 0;
+
+    opacity: 1;
+}
+
+.meplayer-container .meplayer-info-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    overflow: hidden;
+
+    height: 90px;
+    padding-right: 20px;
+
+    -webkit-transition: all .6s cubic-bezier(0, .36, .51, 1.39);
+
+    transition: all .6s cubic-bezier(0, .36, .51, 1.39);
+}
+
+.meplayer-container.meplayer-isplaying .meplayer-info-cover {
+    left: -90px;
+
+    opacity: 0;
+}
+
+.meplayer-container .meplayer-info-cover img {
+    width: 78px;
+    height: 78px;
+
+    border: 6px solid #FFF;
+    box-shadow: 0 0 20px rgba(59, 59, 177, .35);
+}
+
+.meplayer-container .meplayer-meta {
+    float: left;
+
+    margin-left: 110px;
+
+    -webkit-transition: all .6s cubic-bezier(0, .36, .51, 1.39);
+
+    transition: all .6s cubic-bezier(0, .36, .51, 1.39);
+}
+
+.meplayer-container.meplayer-isplaying .meplayer-meta {
+    margin-left: 10px;
+
+    -webkit-transform: scale(.85, .85);
+
+            transform: scale(.85, .85);
+}
+
+.meplayer-container.meplayer-isplaying .meplayer-meta .meplayer-meta-title {
+    margin-top: 4px;
+}
+
+.meplayer-container.meplayer-isplaying .meplayer-meta .meplayer-meta-time-tick {
+    -webkit-transition: all .6s cubic-bezier(0, .36, .51, 1.39) .65s;
+    transition: all .6s cubic-bezier(0, .36, .51, 1.39) .65s;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+
+    opacity: 1;
+}
+
+.meplayer-container .meplayer-meta .meplayer-meta-time-tick {
+    font-size: 13px;
+
+    margin-top: 30px;
+
+    -webkit-transform: translateY(10px);
+
+            transform: translateY(10px);
+    letter-spacing: 1px;
+
+    opacity: 0;
+    color: rgba(0, 0, 0, .6);
+}
+
+.meplayer-container .meplayer-meta-title {
+    font-size: 14px;
+
+    margin-top: 27px;
+    margin-bottom: 2px;
+
+    -webkit-transition: all .6s cubic-bezier(0, .36, .51, 1.39);
+
+    transition: all .6s cubic-bezier(0, .36, .51, 1.39);
+    letter-spacing: 1px;
+
+    color: #6A6B6F;
+}
+
+.meplayer-container .meplayer-meta-author {
+    font-size: 12px;
+
+    color: #CECED6;
+}
+
+.meplayer-container .meplayer-spectrum {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    display: block;
+
+    width: 0;
+    height: 30px;
+    margin-top: -15px;
+    margin-left: -120px;
+
+    -webkit-transition: all .7s cubic-bezier(.17, .67, .45, 1.26) .1s;
+
+    transition: all .7s cubic-bezier(.17, .67, .45, 1.26) .1s;
+    -webkit-transform: translateX(110px);
+            transform: translateX(110px);
+
+    opacity: 0;
+}
+
+.meplayer-container.meplayer-isplaying .meplayer-spectrum {
+    width: 220px;
+
+    -webkit-transform: translateX(0);
+
+            transform: translateX(0);
+
+    opacity: 1;
+}
+
+.meplayer-container.meplayer-haslrc .meplayer-spectrum {
+    display: none;
+}
+
+.meplayer-container .meplayer-lyric {
+    position: absolute;
+    z-index: -2;
+    top: 50%;
+    left: 50%;
+
+    overflow: hidden;
+
+    width: 220px;
+    height: 100%;
+    margin-top: -45px;
+    margin-left: -120px;
+
+    -webkit-transition: all 1s;
+
+    transition: all 1s;
+    -webkit-transform: translateY(15px);
+            transform: translateY(15px);
+
+    opacity: 0;
+}
+
+.meplayer-container.meplayer-isplaying .meplayer-lyric {
+    z-index: 0;
+
+    -webkit-transform: translateY(0);
+
+            transform: translateY(0);
+
+    opacity: 1;
+}
+
+.meplayer-container .meplayer-lyric-area {
+    font-size: 12px;
+
+    margin-top: 35px;
+
+    -webkit-transition: -webkit-transform .7s;
+
+    transition: -webkit-transform .7s;
+
+    transition: transform .7s;
+
+    text-align: center;
+
+    opacity: 0;
+    color: rgba(0, 0, 0, .7);
+}
+
+.meplayer-container .meplayer-lyric-area p {
+    line-height: 0;
+
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    -webkit-transition: all .6s;
+
+    transition: all .6s;
+
+    opacity: 0;
+}
+
+.meplayer-container.meplayer-isplaying .meplayer-lyric-area p {
+    line-height: 20px;
+}
+
+.meplayer-container .meplayer-haslrc .meplayer-lyric-area {
+    display: block;
+}
+
+.meplayer-container.meplayer-isplaying .meplayer-lyric-area {
+    opacity: 1;
+}
+
+.meplayer-container .meplayer-lyric-area .meplayer-lyric-current {
+    font-size: 1.1em;
+
+    opacity: 1;
+}
+
+.meplayer-container .meplayer-lyric-area .meplayer-lyric-pre,
+.meplayer-container .meplayer-lyric-area .meplayer-lyric-next {
+    opacity: .35;
+}
+
+.meplayer-container .meplayer-control {
+    position: relative;
+
+    float: right;
+
+    margin-right: 40px;
+}
+
+.meplayer-container .meplayer-volume-bg {
+    position: absolute;
+    z-index: -1;
+
+    width: 100%;
+    height: 100%;
+
+    -webkit-transition: all .8s;
+
+    transition: all .8s;
+
+    opacity: 0;
+    background: rgba(255, 255, 255, .8);
+}
+
+.meplayer-container.meplayer-adjusting-volume .meplayer-volume-bg {
+    z-index: 20;
+}
+
+.meplayer-container .meplayer-volume {
+    font-size: 50px;
+
+    width: 60px;
+    margin: 13px auto 0;
+
+    -webkit-transition: all .9s;
+
+    transition: all .9s;
+    text-align: center;
+
+    color: rgba(150, 150, 150, .75);
+}
+
+.meplayer-container.meplayer-adjusting-volume .meplayer-volume-bg {
+    opacity: 1;
+}
+
+.meplayer-container .meplayer-volume-progress {
+    height: 4px;
+    /*margin-top: -1px;*/
+
+    -webkit-transition: width .2s;
+
+    transition: width .2s;
+
+    border-radius: 1px;
+    background: rgba(150, 150, 150, .75);
+}
+
+.meplayer-container .meplayer-control-play {
+    position: absolute;
+    top: -25px;
+    right: 0;
+
+    width: 50px;
+    height: 50px;
+
+    cursor: pointer;
+    -webkit-transition: top .6s cubic-bezier(0, .74, .61, 1.35);
+    transition: top .6s cubic-bezier(0, .74, .61, 1.35);
+    text-align: center;
+
+    color: #D94240;
+    border-radius: 50%;
+    background: #FFF;
+    box-shadow: 0 0 10px rgba(59, 59, 177, .22);
+}
+
+.meplayer-container .meplayer-control-play:hover {
+    -webkit-animation: breath 2s infinite alternate;
+            animation: breath 2s infinite alternate;
+}
+
+.meplayer-container.meplayer-isplaying .meplayer-control-play {
+    top: 20px;
+
+    -webkit-animation: breath 2s infinite alternate;
+
+            animation: breath 2s infinite alternate;
+}
+
+.meplayer-container .meplayer-control-play i {
+    line-height: 50px;
+
+    position: absolute;
+    left: 50%;
+
+    margin-left: -7px;
+
+    -webkit-transition: all .5s;
+
+    transition: all .5s;
+}
+
+.meplayer-container .meplayer-control-play .icon-play {
+    -webkit-transform: translateX(2px);
+            transform: translateX(2px);
+
+    opacity: 1;
+}
+
+.meplayer-container.meplayer-isplaying .meplayer-control-play .icon-play {
+    -webkit-transform: translateX(8px);
+            transform: translateX(8px);
+
+    opacity: 0;
+}
+
+.meplayer-container .meplayer-control-play .icon-pause {
+    -webkit-transform: translateX(-8px);
+            transform: translateX(-8px);
+
+    opacity: 0;
+}
+
+.meplayer-container.meplayer-isplaying .meplayer-control-play .icon-pause {
+    -webkit-transform: translateX(-1px);
+            transform: translateX(-1px);
+
+    opacity: 1;
+}
+
+.meplayer-container .meplayer-duration,
+.meplayer-container .meplayer-loadingsign {
+    font-size: 12px;
+
+    position: absolute;
+    right: 40px;
+    bottom: 24px;
+
+    -webkit-transition: all .6s cubic-bezier(0, .74, .61, 1.35);
+
+    transition: all .6s cubic-bezier(0, .74, .61, 1.35);
+    letter-spacing: 1px;
+
+    color: rgba(0, 0, 0, .6);
+}
+
+.meplayer-container.meplayer-isplaying .meplayer-duration,
+.meplayer-container.meplayer-isplaying .meplayer-loadingsign {
+    z-index: -1;
+    bottom: 5px;
+
+    -webkit-transform: scale(.5, .5);
+
+            transform: scale(.5, .5);
+
+    opacity: 0;
+}
+
+.meplayer-container.meplayer-isloading .meplayer-duration {
+    opacity: 0;
+}
+
+.meplayer-container .meplayer-loadingsign {
+    opacity: 0;
+}
+
+.meplayer-container.meplayer-isloading .meplayer-loadingsign {
+    opacity: 1;
+}
+
+.meplayer-container .meplayer-duration i,
+.meplayer-container .meplayer-loadingsign i {
+    margin-right: 3px;
+
+    -webkit-transition: all .7s;
+
+    transition: all .7s;
+    -webkit-transform: scale(.9, .9);
+            transform: scale(.9, .9);
+
+    color: rgba(217, 66, 64, .5);
+}
+
+.meplayer-container.meplayer-isplaying .meplayer-duration i {
+    -webkit-transform: rotateZ(360deg);
+            transform: rotateZ(360deg);
+}
+
+.meplayer-container .meplayer-timeline-bg {
+    position: absolute;
+    bottom: 0;
+
+    width: 100%;
+    height: 8px;
+}
+
+.meplayer-container .meplayer-timeline {
+    position: absolute;
+    bottom: 0;
+
+    overflow: hidden;
+
+    width: 100%;
+    height: 2px;
+
+    -webkit-transition: all .5s;
+
+    transition: all .5s;
+    -webkit-transform: translateY(2px);
+            transform: translateY(2px);
+
+    opacity: 0;
+    background: rgba(231, 231, 239, .8);
+}
+
+.meplayer-container.meplayer-isplaying .meplayer-timeline {
+    cursor: pointer;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+
+    opacity: 1;
+}
+
+.meplayer-container.meplayer-isplaying .meplayer-timeline-bg:hover .meplayer-timeline {
+    height: 8px;
+}
+
+.meplayer-container .meplayer-timeline .meplayer-timeline-passed {
+    position: absolute;
+    bottom: 0;
+
+    width: 0;
+    height: 100%;
+
+    background: #D94240;
+}
+
+.meplayer-container.meplayer-changing-theme .meplayer-volume-bg {
+    display: none;
+}
+
+@-webkit-keyframes breath {
+    0% {
+        box-shadow: 0 0 35px rgba(59, 59, 177, .22);
+    }
+
+    100% {
+        box-shadow: 0 0 10px rgba(59, 59, 177, .33);
+    }
+}
+
+@keyframes breath {
+    0% {
+        box-shadow: 0 0 35px rgba(59, 59, 177, .22);
+    }
+
+    100% {
+        box-shadow: 0 0 10px rgba(59, 59, 177, .33);
+    }
+}
+
+.meplayer-container-mini {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    background: #FFF;
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(59, 59, 177, .18);
+}
+
+.meplayer-isplaying.meplayer-container-mini {
+    -webkit-animation: breath 2s infinite alternate;
+    animation: breath 2s infinite alternate;
+}
+
+.meplayer-container-mini .meplayer-info, .meplayer-container-mini .meplayer-spectrum,
+.meplayer-container-mini .meplayer-lyric, .meplayer-container-mini .meplayer-duration,
+.meplayer-container-mini .meplayer-loadingsign, .meplayer-container-mini .meplayer-timeline-bg {
+    display: none;
+}
+
+.meplayer-container-mini .meplayer-control-play {
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    top: 50%;
+    font-size: 26px;
+    line-height: 90px;
+    left: 50%;
+    margin-top: -45px;
+    margin-left: -45px;
+    color: #D94240;
+}
+
+.meplayer-container-mini .meplayer-control-play [class^='icon-'] {
+    line-height: 90px;
+
+    position: absolute;
+    left: 50%;
+
+    margin-left: -11px;
+
+    -webkit-transition: all .5s;
+
+    transition: all .5s;
+    cursor: pointer;
+}
+
+.meplayer-container-mini .meplayer-control-play .icon-play {
+    -webkit-transform: translateX(4px);
+    transform: translateX(4px);
+    opacity: 1;
+}
+
+.meplayer-container-mini.meplayer-isplaying .meplayer-control-play .icon-play {
+    -webkit-transform: translateX(16px);
+    transform: translateX(16px);
+    opacity: 0;
+}
+
+.meplayer-container-mini .meplayer-control-play .icon-pause {
+    -webkit-transform: translateX(-16px);
+    transform: translateX(-16px);
+    opacity: 0;
+}
+
+.meplayer-container-mini.meplayer-isplaying .meplayer-control-play .icon-pause {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.meplayer-container-mini .meplayer-volume-bg {
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.98);
+    line-height: 90px;
+    border-radius: 50%;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.9);
+    font-size: 30px;
+    -webkit-transition: all 0.8s;
+    transition: all 0.8s;
+}
+
+.meplayer-container-mini.meplayer-adjusting-volume .meplayer-volume-bg {
+    opacity: 1;
+    z-index: 0;
+}
+
+.meplayer-container-mini.meplayer-adjusting-volume .meplayer-volume-bg i {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+}
+
+.meplayer-container-mini .meplayer-volume-bg i {
+    -webkit-transition: all 0.7s;
+    transition: all 0.7s;
+    opacity: 0;
+    -webkit-transform: translateX(-20px);
+            transform: translateX(-20px);
+}
+
+.meplayer-container-mini.meplayer-changing-theme .meplayer-volume-bg {
+    display: none;
+}
+
+@-webkit-keyframes breath {
+    0% {
+        box-shadow: 0 0 35px rgba(59, 59, 177, .25);
+    }
+
+    100% {
+        box-shadow: 0 0 10px rgba(59, 59, 177, .33);
+    }
+}
+
+@keyframes breath {
+    0% {
+        box-shadow: 0 0 35px rgba(59, 59, 177, .25);
+    }
+
+    100% {
+        box-shadow: 0 0 10px rgba(59, 59, 177, .33);
+    }
+}
+
+/*
+   Animation example, for spinners
+*/
+.animate-spin {
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+  -webkit-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+  display: inline-block;
+}
+@-moz-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-webkit-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-o-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-ms-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+@font-face {
+  font-family: 'fontello';
+  src: url('fonts/fontello.eot?77128880');
+  src: url('fonts/fontello.eot?77128880#iefix') format('embedded-opentype'),
+       url('fonts/fontello.woff?77128880') format('woff'),
+       url('fonts/fontello.ttf?77128880') format('truetype'),
+       url('fonts/fontello.svg?77128880#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?77128880#fontello') format('svg');
+  }
+}
+*/
+
+ [class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-play:before { content: '\e801'; } /* '' */
+.icon-pause:before { content: '\e802'; } /* '' */
+.icon-clock:before { content: '\e803'; } /* '' */
+.icon-volume:before { content: '\e804'; } /* '' */
+.icon-spin:before { content: '\e800'; } /* '' */
+
+    </style>
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -132,6 +898,7 @@
         <div class="py-5 z-depth-3" id="board">
           
           <div class="container">
+            <div class="music"></div>
             <div class="row">
               <div class="col-12 col-md-10 m-auto">
                 
@@ -144,9 +911,9 @@
       
       <p class="h5">2020</p>
     
-    <a href="/2020/01/18/macOS%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8git/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">macOS安装和使用git</span>
-      <span style="float: right;">01-18</span>
+    <a href="/2020/01/11/%E8%A7%A3%E5%86%B3homebrew-%E4%B8%8B%E8%BD%BD%E8%BF%87%E6%85%A2%E9%97%AE%E9%A2%98/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">解决 homebrew 下载慢的问题</span>
+      <span style="float: right;">01-11</span>
     </a>
   
 </div>
@@ -294,7 +1061,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "标签 - macOS&nbsp;",
+        "标签 - macos&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 150,
@@ -411,5 +1178,654 @@
 
 
 
+<script>
+  /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
+
+	var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _constants = __webpack_require__(1);
+
+var _lyric = __webpack_require__(2);
+
+var lyric = _interopRequireWildcard(_lyric);
+
+var _utils = __webpack_require__(3);
+
+var utils = _interopRequireWildcard(_utils);
+
+var _spectrum = __webpack_require__(4);
+
+var spectrum = _interopRequireWildcard(_spectrum);
+
+var _selector = __webpack_require__(5);
+
+var selector = _interopRequireWildcard(_selector);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var root = (typeof window === 'undefined' ? 'undefined' : _typeof(window)) == 'object' && window.window === window ? window : (typeof global === 'undefined' ? 'undefined' : _typeof(global)) == 'object' && global.global === global ? global : undefined;
+
+root.mePlayer = function (options) {
+  // 检查必填选项
+  if (!(options.music && options.music.src)) {
+    console.error('必须指定音乐地址哦~');
+    return;
+  }
+
+  var musicConf = options.music,
+      target = selector.$(options.target) || document.querySelector('.meplayer'),
+      theme = options.theme || _constants.THEME_DEFAULT,
+      hasLrc = musicConf.lrc ? true : false,
+      coverSrc = musicConf.cover || 'https://unsplash.it/78/?random',
+      loop = musicConf.loop || false,
+      autoplay = options.autoplay,
+      currentThemeClass = theme === _constants.THEME_DEFAULT ? 'meplayer-container' : 'meplayer-container-mini',
+      containerClass = currentThemeClass + ' ' + (hasLrc ? 'meplayer-haslrc' : '') + ' meplayer-isloading',
+      playerHTMLContent = '<div class="' + containerClass + '">\n                             <audio src=' + musicConf.src + ' preload="auto"></audio>\n                             <div class="meplayer-info">\n                             <div class="meplayer-info-cover"><img src=' + coverSrc + ' alt="cd-cover"></div>\n                             <div class="meplayer-meta">\n                             <div class="meplayer-meta-title">' + musicConf.title + '</div>\n                             <div class="meplayer-meta-author">' + musicConf.author + '</div>\n                             <div class="meplayer-meta-time-tick"><span class="meplayer-meta-time-tick-text"></span></div>\n                             </div>\n                             </div>\n                             <canvas class="meplayer-spectrum"></canvas>\n                             <div class="meplayer-lyric"><div class="meplayer-lyric-area"></div></div>\n                             <div class="meplayer-control"><div class="meplayer-control-play"><i class="icon-play"></i><i class="icon-pause"></i></div></div>\n                             <div class="meplayer-volume-bg"><div class="meplayer-volume"><i class="icon-volume"></i><div class="meplayer-volume-progress"></div></div></div>\n                             <div class="meplayer-duration"><i class="icon-clock"></i><span class="meplayer-duration-text">loading</span></div>\n                             <div class="meplayer-loadingsign"><i class="icon-spin animate-spin"></i>loading</div>\n                             <div class="meplayer-timeline-bg"><div class="meplayer-timeline"><div class="meplayer-timeline-passed"></div></div></div>\n                             </div>';
+
+  target.innerHTML = playerHTMLContent;
+
+  var meplayerContainer = target.querySelector('.' + currentThemeClass),
+      _selector$init$select = selector.init(meplayerContainer).select(['audio', '.meplayer-control-play', '.meplayer-meta-time-tick-text', '.meplayer-duration', '.meplayer-timeline', '.meplayer-timeline-passed', '.meplayer-volume', '.meplayer-volume-progress', '.meplayer-lyric-area', '.meplayer-spectrum']),
+      _selector$init$select2 = _slicedToArray(_selector$init$select, 10),
+      audio = _selector$init$select2[0],
+      playBtn = _selector$init$select2[1],
+      timeTick = _selector$init$select2[2],
+      timeCount = _selector$init$select2[3],
+      timeLine = _selector$init$select2[4],
+      timePassed = _selector$init$select2[5],
+      volumeArea = _selector$init$select2[6],
+      volumeProgress = _selector$init$select2[7],
+      lyricArea = _selector$init$select2[8],
+      canvas = _selector$init$select2[9],
+      duration;
+
+
+  if (hasLrc) {
+    lyric.parse(musicConf.lrc).renderTo(lyricArea);
+  } else {
+    // 频谱动画初始化
+    spectrum.init(canvas);
+  }
+
+  eventInit();
+
+  if (autoplay) {
+    handlePlayClick();
+  }
+
+  // 重定义meplayer
+  root.mePlayer = {
+    play: play,
+    pause: pause,
+    toggleTheme: toggleTheme
+
+    // 给播放器绑定各种事件
+  };function eventInit() {
+    audio.addEventListener('ended', handleAudioEnd);
+    audio.addEventListener('canplaythrough', handleCanPlayThrough);
+    audio.addEventListener('durationchange', handleDurationChange);
+    audio.addEventListener('timeupdate', handleTimeUpdate);
+    playBtn.addEventListener('click', handlePlayClick);
+    timeLine.addEventListener('click', handleTimeLineClick);
+  }
+
+  function handleAudioEnd() {
+    if (loop) {
+      audio.play();
+    } else {
+      utils.removeClass(meplayerContainer, 'meplayer-isplaying');
+    }
+  }
+
+  function handleCanPlayThrough() {
+    duration = this.duration;
+    setTimeout(function () {
+      utils.removeClass(meplayerContainer, 'meplayer-isloading');
+      timeCount.querySelector('.meplayer-duration-text').innerText = utils.parseSec(duration.toFixed(0));
+    }, 1000);
+  }
+
+  function handleDurationChange() {
+    duration = this.duration;
+  }
+
+  function handleTimeUpdate() {
+    var curTime = audio.currentTime;
+    var curTimeForLrc = audio.currentTime.toFixed(3);
+    var playPercent = 100 * (curTime / duration);
+
+    timePassed.style.width = playPercent.toFixed(2) + '%';
+    timeTick.innerText = utils.parseSec(curTime);
+
+    if (hasLrc && theme === _constants.THEME_DEFAULT) {
+      var tempLrcIndex = lyric.currentIndex(curTimeForLrc);
+      var tempLrcLines = lyricArea.querySelectorAll('p');
+      var tempLrcLinePre = tempLrcLines[tempLrcIndex - 1];
+      var tempLrcLine = tempLrcLines[tempLrcIndex];
+      var tempLrcLineNext = tempLrcLines[tempLrcIndex + 1];
+
+      if (!tempLrcLine.className.includes('meplayer-lyric-current')) {
+        utils.removeClass(lyricArea.querySelector('.meplayer-lyric-current'), 'meplayer-lyric-current');
+        if (lyricArea.querySelector('.meplayer-lyric-pre')) {
+          utils.removeClass(lyricArea.querySelector('.meplayer-lyric-pre'), 'meplayer-lyric-pre');
+        }
+        if (lyricArea.querySelector('.meplayer-lyric-next')) {
+          utils.removeClass(lyricArea.querySelector('.meplayer-lyric-next'), 'meplayer-lyric-next');
+        }
+        utils.addClass(tempLrcLine, 'meplayer-lyric-current');
+        if (tempLrcLinePre) {
+          utils.addClass(tempLrcLinePre, 'meplayer-lyric-pre');
+        }
+        if (tempLrcLineNext) {
+          utils.addClass(tempLrcLineNext, 'meplayer-lyric-next');
+        }
+
+        lyricArea.style.webkitTransform = 'translateY(-' + 20 * tempLrcIndex + 'px)';
+        lyricArea.style.transform = 'translateY(-' + 20 * tempLrcIndex + 'px)';
+      }
+    }
+  }
+
+  function handlePlayClick() {
+    var _handleMouseWheel;
+
+    if (audio.paused) {
+      audio.play();
+      if (theme === _constants.THEME_DEFAULT && !hasLrc) {
+        spectrum.draw();
+      }
+      // 播放状态中可以用滑轮调节音量
+      meplayerContainer.addEventListener('mousewheel', function handleMouseWheel() {
+        var timer = null;
+        var step = 0.05;
+        _handleMouseWheel = function _handleMouseWheel(event) {
+          if (timer) {
+            clearTimeout(timer);
+          }
+          if (!meplayerContainer.className.includes('meplayer-adjusting-volume')) {
+            utils.addClass(meplayerContainer, 'meplayer-adjusting-volume');
+          }
+          if (event.wheelDeltaY < 0 && audio.volume > step) {
+            audio.volume -= step;
+          }
+          if (event.wheelDeltaY > 0 && audio.volume < 1 - step) {
+            audio.volume += step;
+          }
+          if (theme === _constants.THEME_DEFAULT) {
+            volumeProgress.style.width = audio.volume * 100 + '%';
+          } else {
+            volumeArea.querySelector('i').style.opacity = audio.volume;
+          }
+          event.preventDefault();
+
+          timer = setTimeout(function () {
+            utils.removeClass(meplayerContainer, 'meplayer-adjusting-volume');
+          }, 1000);
+        };
+        return _handleMouseWheel;
+      }());
+    } else {
+      audio.pause();
+      spectrum.stop();
+      meplayerContainer.removeEventListener('mousewheel', _handleMouseWheel);
+    }
+    utils.toggleClass(meplayerContainer, 'meplayer-isplaying');
+  }
+
+  function handleTimeLineClick() {
+    var clickPercent = (event.pageX - utils.getAbsLeft(this)) / this.offsetWidth;
+    timePassed.style.width = clickPercent * 100 + '%';
+    audio.currentTime = (clickPercent * duration).toFixed(0);
+  }
+
+  function play() {
+    if (audio.paused) {
+      utils.addClass(meplayerContainer, 'meplayer-isplaying');
+      audio.play();
+    }
+  }
+
+  function pause() {
+    if (!audio.paused) {
+      utils.removeClass(meplayerContainer, 'meplayer-isplaying');
+      audio.pause();
+    }
+  }
+
+  function toggleTheme() {
+    var step = 0.03;
+    var count = 0;
+    var maxCount = 200;
+
+    utils.addClass(meplayerContainer, 'meplayer-changing-theme');
+
+    theme = theme === _constants.THEME_DEFAULT ? _constants.THEME_MINI : _constants.THEME_DEFAULT;
+
+    loop();
+
+    function loop() {
+      count++;
+      meplayerContainer.style.opacity -= step;
+      if (meplayerContainer.style.opacity <= 0) {
+        step *= -1;
+        meplayerContainer.style.opacity = 0;
+        utils.toggleClass(meplayerContainer, 'meplayer-container-mini');
+        utils.toggleClass(meplayerContainer, 'meplayer-container');
+      }
+      if (meplayerContainer.style.opacity < 1 && count < maxCount) {
+        requestAnimationFrame(loop);
+      } else {
+        setTimeout(function () {
+          utils.removeClass(meplayerContainer, 'meplayer-changing-theme');
+        }, 500);
+      }
+    }
+  }
+};
+
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+  module.exports = root.mePlayer;
+}
+/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/*
+ * 全局常量声明
+ */
+
+var THEME_DEFAULT = 'default';
+var THEME_MINI = 'mini';
+var LYRIC_CURRENT_CLASS = 'meplayer-lyric-current';
+var LYRIC_NEXT_CLASS = 'meplayer-lyric-next';
+
+exports.THEME_DEFAULT = THEME_DEFAULT;
+exports.THEME_MINI = THEME_MINI;
+exports.LYRIC_CURRENT_CLASS = LYRIC_CURRENT_CLASS;
+exports.LYRIC_NEXT_CLASS = LYRIC_NEXT_CLASS;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.currentIndex = exports.renderTo = exports.parse = undefined;
+
+var _constants = __webpack_require__(1);
+
+var lyrics;
+
+// 歌词解析脚本
+// 修改自：https://github.com/DIYgod/APlayer
+function parse(text) {
+  var lyric = text.split('\n');
+  var lrc = [];
+  var len = lyric.length;
+  var reg1 = /\[(\d{2}):(\d{2})\.(\d{2,3})]/g;
+  var reg2 = /\[(\d{2}):(\d{2})\.(\d{2,3})]/;
+  for (var i = 0; i < len; i++) {
+    var time = lyric[i].match(reg1);
+    var lrcText = lyric[i].replace(reg1, '').replace(/^\s+|\s+$/g, '');
+    // 排除空行
+    if (!lrcText) {
+      continue;
+    }
+    if (time != null) {
+      var timeLen = time.length;
+      for (var j = 0; j < timeLen; j++) {
+        var oneTime = reg2.exec(time[j]);
+        var lrcTime = oneTime[1] * 60 + parseInt(oneTime[2]) + parseInt(oneTime[3]) / ((oneTime[3] + '').length === 2 ? 100 : 1000);
+        lrc.push({
+          time: lrcTime,
+          text: lrcText
+        });
+      }
+    }
+  }
+  lrc.sort(function (a, b) {
+    return a.time - b.time;
+  });
+
+  lyrics = lrc;
+  return this;
+}
+
+// 歌词文本解析成DOM结构
+function renderTo(target) {
+  if (!lyrics) {
+    console.error('未指定歌词文本！');
+    return;
+  }
+  var lyricHTML = '';
+  for (var i = 0; i < lyrics.length; i++) {
+    lyricHTML += '<p>' + lyrics[i].text + '</p>';
+  }
+  target.innerHTML = lyricHTML;
+  target.querySelector('p').className = _constants.LYRIC_CURRENT_CLASS;
+  target.querySelector('p + p').className = _constants.LYRIC_NEXT_CLASS;
+  return this;
+}
+
+function currentIndex(time) {
+  if (time < lyrics[0].time) return 0;
+  for (var i = 0, l = lyrics.length; i < l; i++) {
+    if (time >= lyrics[i].time && (!lyrics[i + 1] || time <= lyrics[i + 1].time)) {
+      break;
+    }
+  }
+  return i;
+}
+
+exports.parse = parse;
+exports.renderTo = renderTo;
+exports.currentIndex = currentIndex;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function toggleClass(el, className) {
+  if (el.classList) {
+    el.classList.toggle(className);
+  } else {
+    var classes = el.className.split(' ');
+    var existingIndex = classes.indexOf(className);
+
+    if (existingIndex >= 0) classes.splice(existingIndex, 1);else classes.push(className);
+
+    el.className = classes.join(' ');
+  }
+}
+
+function addClass(el, className) {
+  if (el.classList) el.classList.add(className);else el.className += ' ' + className;
+}
+
+function removeClass(el, className) {
+  if (el.classList) el.classList.remove(className);else el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+}
+
+function getAbsLeft(el) {
+  var left = el.offsetLeft;
+  while (el.offsetParent) {
+    el = el.offsetParent;
+    left += el.offsetLeft;
+  }
+  return left;
+}
+
+function parseSec(sec) {
+  var tempMin = sec / 60 | 0;
+  var tempSec = sec % 60 | 0;
+  var curMin = tempMin < 10 ? '0' + tempMin : tempMin;
+  var curSec = tempSec < 10 ? '0' + tempSec : tempSec;
+  return curMin + ':' + curSec;
+}
+
+exports.toggleClass = toggleClass;
+exports.addClass = addClass;
+exports.removeClass = removeClass;
+exports.getAbsLeft = getAbsLeft;
+exports.parseSec = parseSec;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/*
+ * 频谱动画模拟
+ * */
+var canvas,
+    ctx,
+    specItems = [],
+    needStop = false,
+    timer = null,
+    random = Math.random;
+
+function randHeight() {
+  if (random() > 0.8) {
+    return random() * 8 + 11;
+  } else {
+    return random() * 6 + 2;
+  }
+}
+
+var randHeightGenerator = function randHeightGenerator(base) {
+  var max = base * 1.5 > 28 ? 28 : base * 1.5,
+      min = 1,
+      direction = random() > 0.5 ? 1 : -1,
+      tempHeight = base,
+      curStep;
+  return function () {
+    curStep = direction;
+    tempHeight += curStep;
+    if (tempHeight >= max) {
+      direction *= -1;
+      tempHeight = max;
+    } else if (tempHeight <= min) {
+      direction *= -1;
+      tempHeight = min;
+    }
+    if (random() > 0.9) {
+      direction *= -1;
+    }
+    return tempHeight;
+  };
+};
+
+function loop() {
+  ctx.clearRect(0, -canvas.height / 2, canvas.width, canvas.height);
+  for (var i = 0; i < specItems.length; i++) {
+    var item = specItems[i];
+    var height = item.getHeight();
+    ctx.fillRect(i + specItems[i].xSpace, -height / 2, specItems[i].width, height);
+  }
+
+  if (!needStop) {
+    timer = requestAnimationFrame(loop);
+  }
+}
+
+function init(canvasElem) {
+  var width = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 220;
+  var height = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 30;
+  var color = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '#D94240';
+
+  canvas = canvasElem;
+  canvas.width = width;
+  canvas.height = height;
+  ctx = canvas.getContext('2d');
+  ctx.fillStyle = color;
+  ctx.translate(0, height / 2);
+
+  for (var i = 0; i < 64; i++) {
+    var xSpace = i == 0 ? 0 : 5 * i;
+    var tempItem = {
+      xSpace: xSpace,
+      width: 1,
+      getHeight: randHeightGenerator(randHeight())
+    };
+    specItems.push(tempItem);
+  }
+}
+
+function draw() {
+  needStop = false;
+  loop();
+}
+
+function stop() {
+  needStop = true;
+}
+
+exports.init = init;
+exports.draw = draw;
+exports.stop = stop;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/**
+ * 元素选择器辅助工具模块
+ * init  : 设定容器
+ * select: 传入选择器则返回元素，传入选择器数组则返回对应的元素数组
+ * $     : 辅助功能，使得无论传入选择器字符串还是元素本身，都能返回正确的元素
+ */
+
+var container;
+
+function init(element) {
+  container = $(element);
+  return this;
+}
+
+function select(element) {
+  var result;
+  if (Array.isArray(element)) {
+    var tempResults = [];
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+      for (var _iterator = element[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var value = _step.value;
+
+        tempResults.push($(value, container));
+      }
+    } catch (err) {
+      _didIteratorError = true;
+      _iteratorError = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion && _iterator.return) {
+          _iterator.return();
+        }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
+      }
+    }
+
+    result = tempResults;
+  } else {
+    result = $(element, container);
+  }
+  return result;
+}
+
+function $(element, context) {
+  var result;
+  context = context || document;
+  if (typeof element === 'string') {
+    result = context.querySelector(element);
+  } else if (element.toString().includes('HTMLDivElement')) {
+    result = element;
+  }
+
+  return result;
+}
+
+exports.init = init;
+exports.select = select;
+exports.$ = $;
+
+/***/ })
+/******/ ]);
+</script>
+<script>
+    mePlayer({
+      theme: 'mini',
+  music: {
+    src: 'https://onedrive.gimhoy.com/sharepoint/aHR0cHM6Ly9lbWFpbG5jdWVkdWNuLW15LnNoYXJlcG9pbnQuY29tLzp1Oi9nL3BlcnNvbmFsLzUxMDIxMTUwMjZfZW1haWxfbmN1X2VkdV9jbi9FV1FnbmpBQ29MUkVoc2IyaFpkTkpoNEJqUDk2XzBtZnNaX0FKeFlLT1E3clB3P2U9ekRTSm9J.mp3',
+    title: '悬日',
+    author: '田馥甄',
+    loop: true,
+    cover: 'https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike272%2C5%2C5%2C272%2C90/sign=c46753d3dfa20cf4529df68d17602053/91ef76c6a7efce1b00f31c9ea051f3deb58f658e.jpg',
+    lrc: ''
+  },
+  target: '.music',
+  autoplay: true
+})
+
+window.setTimeout(mePlayer.play, 1500)
+</script>
 </body>
 </html>
