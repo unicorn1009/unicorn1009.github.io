@@ -16,7 +16,7 @@
   <meta name="description" content="文化使人脸上肉变多     -- 鲁迅">
   <meta name="author" content="Unicorn">
   <meta name="keywords" content="">
-  <title>标签 - macOS ~ Unicorn&#39;s blog</title>
+  <title>macOS安装和使用git ~ Unicorn&#39;s blog</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -39,7 +39,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -107,7 +107,7 @@
 </nav>
 
     <div class="view intro-2" id="background"
-         style="background: url('/img/wallhaven-label.jpg')no-repeat center center;
+         style="background: url('/img/post_banner.jpg')no-repeat center center;
            background-size: cover;
            background-attachment: fixed;">
       <div class="full-bg-img">
@@ -117,6 +117,41 @@
               
             </span>
 
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期六, 一月 18日 2020, 5:32 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    350 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      1 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
             
           </div>
 
@@ -128,36 +163,91 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-<!--  <p class="h4">共计 1 篇文章</p>-->
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/01/18/macOS%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8git/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">macOS安装和使用git</span>
-      <span style="float: right;">01-18</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p>记录一下安装和使用过程</p>
+<a id="more"></a>
+<ol>
+<li>下载安装<ul>
+<li>通过homebrew安装Git<ul>
+<li>Mac OS X是基于Unix的，它可以使用非常多Linux平台上开源的优秀工具，比如wget，比如dos2unix脚本工具等。</li>
+<li>但是OS X系统本身却缺少Linux下的包管理器。比如Fedora的yum与dnf，比如Ubuntu的apt-get，比如ArchLinux的Pacman等。</li>
+<li>于是这些优秀的开源软件在Mac上的安装只能通过下载源码，编译，安装，配置环境变量的步骤来完成安装。对于大部分的软件，在安装过程中是需要很多的依赖库的，手动去解决这些依赖库是十分痛苦的事情。包管理器干的就是这样的事情：解决软件安装过程中的依赖关系。</li>
+<li>有一个开源的项目叫Homebrew，完美解决了Mac OS X上没有包管理器的尴尬。</li>
+<li>如果之前未安装homebrew，需安装homebrew，在终端输入：<pre><code class="bash">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>创建ssh key、配置git<ul>
+<li>设置username和email（github每次commit都会记录他们）<pre><code class="bash">   git config --global user.name &quot;wurui&quot;
+   git config --global user.email &quot;1428173426@qq.com&quot;</code></pre>
+<ul>
+<li>通过终端命令创建ssh key<pre><code> ```bash
+ ssh-keygen -t rsa -C &quot;这里填写你的邮箱地址&quot;
+ ```</code></pre></li>
+<li>终端查看.ssh/id_rsa.pub文件,然后复制里面的key: <pre><code> ```bash
+ open .ssh/id_rsa.pub
+ ```</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
 
-
-              </div>
-            </div>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/git">git</a>
+                
+                  <a class="hover-with-bg" href="/tags/macOS">macOS</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -254,6 +344,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
@@ -294,7 +389,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "标签 - macOS&nbsp;",
+        "macOS安装和使用git&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 150,
